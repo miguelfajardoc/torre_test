@@ -39,7 +39,7 @@
 </body>
 <script>
     console.log("aqui");
-    
+
     let text_id = document.getElementById("id");
     document.getElementById("b1").addEventListener("click", send);
     function send()
@@ -49,10 +49,11 @@
             console.log("sent");
             console.log(this.responseText);
         };
-        console.log(xhttp.open("GET", "/id", true));
+        let url = "/id/" + text_id.value;
+        console.log(xhttp.open("GET", url, true));
         xhttp.send();
-        console.log(text_id);
-        console.log(this);
+        <!--console.log("text_id" + text_id.value);-->
+        <!--console.log("this" + this);-->
     }
 
 </script>
