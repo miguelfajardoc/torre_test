@@ -10,6 +10,12 @@ app = Flask(__name__)
 def index():
     return render_remplate('index.html')
 
+
+@app.route('/id')
+def id():
+    return 'id function'
+
+
 app.debug = True
 app.run(host='0.0.0.0', port=5000)
 app.url_map.strict_slashes = False
