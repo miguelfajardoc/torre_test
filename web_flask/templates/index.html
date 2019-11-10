@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<body>
+    <div class="menubar">
+        <div>
+            <h2>Torre Test!</h2>
+        </div>
+        <div>
+            <h2>
+                Principal
+            </h2>
+        </div>
+        <div>
+            <h2>
+                Node related
+            </h2>
+        </div>
+        <div>
+            <h2>
+                Stadistics
+            </h2>
+        </div>
+    </div>
+    <div class="content">
+        <div class="search_id">
+            <input type="text" name="id" id="id" value="mguelfajardoc">
+            <button id="b1" value="Search">
+        </div>
+    </div>
+
+</body>
+<script>
+    console.log("aqui");
+    
+    let text_id = document.getElementById("id");
+    document.getElementById("b1").addEventListener("click", send);
+    function send()
+    {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            console.log("sent");
+            console.log(this.responseText);
+        };
+        console.log(xhttp.open("GET", "/id", true));
+        xhttp.send();
+        console.log(text_id);
+        console.log(this);
+    }
+
+</script>
+
+</html>
