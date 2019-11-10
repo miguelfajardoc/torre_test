@@ -8,51 +8,90 @@
     <title>Document</title>
 </head>
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<style>
+    body {
+        margin: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .menubar {
+        display: flex;
+        align-items: flex-start;
+        background-color: #73A6FF;
+    }
+
+    .content {
+        margin-left: 10px;
+    }
+
+    .menubar div {
+        padding-left: 6px;
+        padding-right: 6px;
+        background-color: #73A6FF;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .menubar div:hover {
+        background-color: #6CD8FF;
+    }
+
+    .search_id button {
+        height: 20px;
+        background-color: #5DA9E8;
+    }
+
+    .search_id button:hover {
+        background-color: #6666FF;
+    }
+</style>
+
 <body>
     <div class="menubar">
         <div>
-            <h2>Torre Test!</h2>
+            <span>Torre Test!</span>
         </div>
         <div>
-            <h2>
+            <span>
                 Principal
-            </h2>
+            </span>
         </div>
         <div>
-            <h2>
+            <span>
                 Node related
-            </h2>
+            </span>
         </div>
         <div>
-            <h2>
+            <span>
                 Stadistics
-            </h2>
+            </span>
         </div>
     </div>
     <div class="content">
+        <div>
+            <h3>Put the id to search!</h3>
+        </div>
         <div class="search_id">
             <input type="text" name="id" id="id" value="mguelfajardoc">
-            <button id="b1" value="Search">
+            <button id="b1" value="Search" name="search">Search</button>
         </div>
     </div>
 
 </body>
 <script>
     console.log("aqui");
-    
+
     let text_id = document.getElementById("id");
     document.getElementById("b1").addEventListener("click", send);
-    function send()
-    {
+    function send() {
         let xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             console.log("sent");
             console.log(this.responseText);
         };
         console.log(xhttp.open("GET", "/id", true));
         xhttp.send();
         console.log(text_id);
-        console.log(this);
+        console.log("this" + this);
     }
 
 </script>
