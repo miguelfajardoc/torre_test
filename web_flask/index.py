@@ -93,6 +93,7 @@ def create_dict(dictionary, user, father, angle, i=0):
     print(data["id"])
     dictionary[data["id"]] = data.copy()
 
-app.debug = True
-app.run(host='0.0.0.0', port=5000)
+#app.debug = True
+if __name__ = _ '__name__':
+    app.run(treaded=True, port=5000)
 app.url_map.strict_slashes = False
