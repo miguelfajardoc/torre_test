@@ -1,3 +1,4 @@
+![N|Solid](https://miro.medium.com/max/567/1*ngG0t_XJvzMop2GhZammKw.png)
 # Torre Test!
 This project use the api of torre.co with this endpoints:
 - GET https://torre.bio/api/bios/$username (gets bio information of $username)
