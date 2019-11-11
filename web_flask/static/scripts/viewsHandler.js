@@ -3,4 +3,8 @@ window.addEventListener("load", function(){
     ("click", function () {
 	location.replace('/node');
     });
+    document.getElementById("principal").addEventListener
+    ("click", function () {
+	location.replace('/');
+    });
 });

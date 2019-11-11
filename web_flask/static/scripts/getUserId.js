@@ -35,7 +35,7 @@ window.addEventListener("load", function(){
 		element.innerHTML += "<img src=" + picture + "></img>"
 		element.innerHTML += "<h2>" + name + "</h2>"
 		element.innerHTML += "<h2>" + weight + "</h2>"
-
+		window.scrollTo(0, 1000);
             }
         };
         let url = "/id/" + text_id.value;
