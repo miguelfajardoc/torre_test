@@ -1,8 +1,10 @@
     body {
         margin: 0;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: x-small;
     }
     .menubar {
+	font-size: small;
         display: flex;
         align-items: flex-start;
         background-color: #73A6FF;
@@ -27,7 +29,23 @@
         height: 20px;
         background-color: #5DA9E8;
     }
+    #user_content img{
+	height: 50%;
+	width: 50%;
+    }
 
     .search_id button:hover {
         background-color: #6666FF;
+    }
+    #list_names {
+	padding: 0;
+	margin-top: 10px;
+	list-style: none;
+    }
+    #list_names li{
+	background-color: #C7F8FF;
+	padding-left: 5px;
+    }
+    #list_names li:hover{
+	background-color: #A7D5EB;
     }
