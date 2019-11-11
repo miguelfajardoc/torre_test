@@ -1,49 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style1.css')}}">
-    <script type="text/javascript" src="{{ url_for('static', filename='scripts/getUserId.js')}}"></script>
-    <title>Document</title>
-</head>
-<body>
-    <div class="menubar">
-        <div class="title">
-            <span>Torre Test!</span>
-        </div>
-        <div>
-            <span>
-                Principal
-            </span>
-        </div>
-        <div>
-            <span>
-                Node related
-            </span>
-        </div>
-        <div>
-            <span>
-                Stadistics
-            </span>
-        </div>
-    </div>
-    <div class="content">
-        <div>
-            <h3>Put the id to search!</h3>
-        </div>
-        <div class="search_id">
-            <input type="text" name="id" id="id_user" value="mguelfajardoc">
-            <button id="b1" value="Search" name="search">Search</button>
-        </div>
-    </div>
-    <div id="user_content">
-    </div>
-
-</body>
-<script>
+window.addEventListener("load", function(){
     console.log("aqui");
 
     let text_id = document.getElementById("id_user");
@@ -90,7 +45,4 @@
         <!--console.log("text_id" + text_id.value);-->
         <!--console.log("this" + this);-->
     }
-
-</script>
-
-</html>
+)};

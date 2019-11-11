@@ -1,0 +1,33 @@
+    body {
+        margin: 0;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .menubar {
+        display: flex;
+        align-items: flex-start;
+        background-color: #73A6FF;
+        color: white;
+    }
+    .menubar .title {
+        background-color: #5974EB;
+    }
+    .content {
+        margin-left: 10px;
+    }
+    .menubar div {
+        padding-left: 6px;
+        padding-right: 6px;
+        background-color: #73A6FF;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .menubar div:hover {
+        background-color: #6CD8FF;
+    }
+    .search_id button {
+        height: 20px;
+        background-color: #5DA9E8;
+    }
+
+    .search_id button:hover {
+        background-color: #6666FF;
+    }
