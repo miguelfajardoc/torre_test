@@ -23,9 +23,11 @@ window.addEventListener("load", function(){
 			console.log(value)
 			draw(value);
 		}
+		document.getElementById("wait").innerHTML = "";
 	    }
 	};
 	let url = "/conections/" + id.value;
+	document.getElementById("wait").innerHTML = "Loading conections....";
 	xhttp.open("GET", url, true);
 	xhttp.send();
 	//function that recieve the data and draw the picture in a canvas

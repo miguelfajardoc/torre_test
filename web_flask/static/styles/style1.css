@@ -29,6 +29,7 @@ body {
 	justify-content: center;
     }
     .menubar div {
+	cursor: pointer;
 	padding: 10px 6px;
         //background-color: #73A6FF;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -44,6 +45,7 @@ body {
 	border: none;
 	padding: 14px 12px;
 	line-height: 0px;
+	cursor: pointer;
     }
     input {
 	background: transparent;
@@ -82,7 +84,8 @@ body {
 	background-color: #C08974;
     }
     canvas {
-	border: 1px solid red;
+	border: 3px solid white;
+	border-radius: 8px;
     }
     img {
     height: 50%;
