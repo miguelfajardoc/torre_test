@@ -1,1 +1,1 @@
-web: gunicorn webflask.index
+web: gunicorn web_flask.index
