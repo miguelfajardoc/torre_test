@@ -94,6 +94,6 @@ def create_dict(dictionary, user, father, angle, i=0):
     dictionary[data["id"]] = data.copy()
 
 #app.debug = True
-if __name__ = _ '__name__':
+if __name__ == '__main__':
     app.run(treaded=True, port=5000)
 app.url_map.strict_slashes = False
