@@ -24,7 +24,6 @@ def id(text):
     """
     url = "https://bio.torre.co/api/bios/{}".format(text)
     request = get(url)
-    #print(request.json())
     return request.json()
 
 @app.route('/key/<text>')
@@ -43,42 +42,56 @@ def conections(text):
         return the information to draw the nodes
     """
     limit = 6
-    url_conect = "https://bio.torre.co/api/people/{}/connections?limit={}".format(text, limit)
-    request_conections = get(url_conect).json()
+    request_conections = get_conections(text, limit)
     request_user = id(text)
     angle = 360 / limit
+    angle2 = 30
     principal = {}
     secondary = {}
     data = {}
-    data["name"] = request_user["person"]["name"]
-    data["id"] = request_user["person"]["publicId"]
-    data["img"] = request_user["person"]["picture"]
-    data["posx"] = 300
-    data["posy"] = 200
-    data["related_to"] = "self"
-    data["angle"] = angle
-    principal[data["id"]] = data
+    create_dict(principal, request_user, "self", angle)
+
     i = 1
     for conection in request_conections:
-        data["name"] = conection["person"]["name"]
-        data["id"] = conection["person"]["publicId"]
-        try:
-            data["img"] = conection["person"]["picture"]
-        except:
-            pass
-
-        data["posx"] = math.cos(math.radians(angle * i))
-        data["posy"] = math.sin(math.radians(angle * i))
-        data["related_to"] = request_user["person"]["publicId"]
-        data["angle"] = angle
-        principal[data["id"]] = data
-
+        create_dict(principal, conection, request_user, angle, i)
+        i += 1
+        conections_conection = get_conections(conection["person"]["publicId"], limit - 3)
+        j = 1
+        for conect in conections_conection:
+            create_dict(secondary, conect, conection, angle2, j)
+            j += 1
     print(request_conections)
     print(request_user)
     print("principal")
     print(principal)
-    return json.dumps(request_conections)
+    print("secondary")
+    print(secondary)
+    return json.dumps([principal, secondary])
 
+def get_conections(user_id, limit):
+    url_conect = "https://bio.torre.co/api/people/{}/connections?limit={}".format(user_id, limit)
+    return get(url_conect).json()
+
+def create_dict(dictionary, user, father, angle, i=0):
+    data = {}
+    data["name"] = user["person"]["name"]
+    data["id"] = user["person"]["publicId"]
+    try:
+        data["img"] = user["person"]["picture"]
+    except:
+        pass
+    if father == "self":
+        data["posx"] = 0
+        data["posy"] = 0
+        data["related_to"] = "self"
+    else:
+        data["posx"] = math.cos(math.radians(angle * i))
+        data["posy"] = math.sin(math.radians(angle * i))
+        data["related_to"] = father["person"]["publicId"]
+    data["angle"] = angle
+    print("data[id]")
+    print(data["id"])
+    dictionary[data["id"]] = data.copy()
 
 app.debug = True
 app.run(host='0.0.0.0', port=5000)

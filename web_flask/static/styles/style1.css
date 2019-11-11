@@ -49,3 +49,6 @@
     #list_names li:hover{
 	background-color: #A7D5EB;
     }
+    canvas {
+	border: 1px solid red;
+    }
