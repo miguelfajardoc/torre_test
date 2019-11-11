@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """ start point of the app """
     return render_template('index.html')
 
 @app.route('/node')
@@ -33,7 +34,6 @@ def key(text):
     """
     url = "https://bio.torre.co/api/people?q={}&limit=10".format(text)
     request = get(url).json()
-    print(json.dumps(request))
     return json.dumps(request)
 
 @app.route('/conections/<text>')
@@ -60,19 +60,18 @@ def conections(text):
         for conect in conections_conection:
             create_dict(secondary, conect, conection, angle2, j)
             j += 1
-    print(request_conections)
-    print(request_user)
-    print("principal")
-    print(principal)
-    print("secondary")
-    print(secondary)
     return json.dumps([principal, secondary])
 
 def get_conections(user_id, limit):
+    """ function that get the conections of an user given the id
+    """
     url_conect = "https://bio.torre.co/api/people/{}/connections?limit={}".format(user_id, limit)
     return get(url_conect).json()
 
 def create_dict(dictionary, user, father, angle, i=0):
+    """ handle the data to given by the conections to prepare
+        for javascript draw
+    """
     data = {}
     data["name"] = user["person"]["name"]
     data["id"] = user["person"]["publicId"]
@@ -89,11 +88,8 @@ def create_dict(dictionary, user, father, angle, i=0):
         data["posy"] = math.sin(math.radians(angle * i))
         data["related_to"] = father["person"]["publicId"]
     data["angle"] = angle
-    print("data[id]")
-    print(data["id"])
     dictionary[data["id"]] = data.copy()
 
-#app.debug = True
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
     app.url_map.strict_slashes = False

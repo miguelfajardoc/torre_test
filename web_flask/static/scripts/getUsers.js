@@ -1,5 +1,4 @@
 window.addEventListener("load", function(){
-    console.log("aqui");
 
     let key = document.getElementById("key_user");
     document.getElementById("b2").addEventListener("click", search);
@@ -10,8 +9,6 @@ window.addEventListener("load", function(){
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
 		let response = JSON.parse(this.responseText);
-		console.log("the response");
-		console.log(response);
 
 		let element = document.getElementById("list_names")
 		let child = element.lastElementChild;
@@ -26,16 +23,11 @@ window.addEventListener("load", function(){
 		fill(response);
 		function fill(response) {
 		    let li = element.querySelectorAll("li");
-		    console.log(li);
-		    console.log("response");
-		    console.log(response);
 		    for(j = 0; j < li.length; j++) {
 			console.log("adding listener");
 			li[j].addEventListener("click", function (){
-			    console.log("this " + this.lastElementChild.innerHTML);
 			    document.getElementById("id_user").value = this.lastElementChild.innerHTML;
 			    document.getElementById("b1").click();
-			    console.log("filed and clicked");
 			});
 		    }
 		};
