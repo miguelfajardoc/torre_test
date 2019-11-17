@@ -7,6 +7,7 @@ window.addEventListener("load", function(){
         let xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
+	    let consult = document.getElementById("consult_id");
             if (this.readyState == 4 && this.status == 200) {
 		let response = JSON.parse(this.responseText)
 
@@ -27,7 +28,21 @@ window.addEventListener("load", function(){
 		element.innerHTML += "<h2>" + name + "</h2>"
 		element.innerHTML += "<h2>" + weight + "</h2>"
 		window.scrollTo(0, 1000);
+
+		if (consult.lastElementChild.localName == "span") {
+		    consult.removeChild(consult.lastElementChild);
+		}
             }
+	    else if (this.readyState == 4 && this.status == 404) {
+		if (consult.lastElementChild.localName == "span") {
+		    consult.removeChild(consult.lastElementChild);
+		}
+		console.log("Id not found");
+		new_node = document.createElement("span");
+		new_node.className = "small";
+		new_node.textContent = "Id not found, please try again";
+		consult.appendChild(new_node);
+	    }
         };
         let url = "/id/" + text_id.value;
         xhttp.open("GET", url, true);

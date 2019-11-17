@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """main module of the app"""
 
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 from requests import get
 import json
 import math
@@ -25,6 +25,9 @@ def id(text):
     """
     url = "https://bio.torre.co/api/bios/{}".format(text)
     request = get(url)
+    print(request.status_code)
+    if request.status_code != 200:
+        abort(404, 'Not Found')
     return request.json()
 
 @app.route('/key/<text>')
