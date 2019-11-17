@@ -21,7 +21,7 @@ $ pip3 install -r requirements.txt
 ```sh
 $ python3 -m web_flask.index
 ```
-4. Or run with gunicor, to production:
+4. Or run with gunicorn, to production:
 ```sh
 $ gunicorn web_flask.index:app
 ```
