@@ -4,9 +4,11 @@ window.addEventListener("load", function(){
 
     let id = document.getElementById("id_user");
     document.getElementById("b1").addEventListener("click", conections);
+    let consult = document.getElementById("consult_id");
     function conections() {
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
+
 	    if (this.readyState == 4 && this.status == 200) {
 		distance = 180;
 		response = JSON.parse(this.responseText);
@@ -19,8 +21,23 @@ window.addEventListener("load", function(){
 		}
 		document.getElementById("wait").innerHTML = "";
 	    }
+	    else if (this.readyState == 4 && this.status == 404) {
+		if (consult.lastElementChild.localName == "span") {
+		    consult.removeChild(consult.lastElementChild);
+		}
+		document.getElementById("wait").innerHTML = "";
+		console.log("Id not found");
+		new_node = document.createElement("span");
+		new_node.className = "small";
+		new_node.textContent = "Id not found, please try again";
+		consult.appendChild(new_node);
+	    }
+
 	};
 	let url = "/conections/" + id.value;
+	if (consult.lastElementChild.localName == "span") {
+		    consult.removeChild(consult.lastElementChild);
+		}
 	document.getElementById("wait").innerHTML = "Loading conections....";
 	xhttp.open("GET", url, true);
 	xhttp.send();

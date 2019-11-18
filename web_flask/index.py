@@ -36,8 +36,11 @@ def key(text):
         and return a list of coincidences
     """
     url = "https://bio.torre.co/api/people?q={}&limit=10".format(text)
-    request = get(url).json()
-    return json.dumps(request)
+    request = get(url)
+    print(request.json())
+    if request.status_code != 200 or len(request.json()) < 1:
+        abort(404, 'Not Found')
+    return json.dumps(request.json())
 
 @app.route('/conections/<text>')
 def conections(text):
@@ -69,7 +72,10 @@ def get_conections(user_id, limit):
     """ function that get the conections of an user given the id
     """
     url_conect = "https://bio.torre.co/api/people/{}/connections?limit={}".format(user_id, limit)
-    return get(url_conect).json()
+    request = get(url_conect)
+    if request.status_code != 200:
+        abort(404, 'Not Found')
+    return request.json()
 
 def create_dict(dictionary, user, father, angle, i=0):
     """ handle the data to given by the conections to prepare

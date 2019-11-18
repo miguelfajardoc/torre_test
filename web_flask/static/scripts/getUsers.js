@@ -7,6 +7,7 @@ window.addEventListener("load", function(){
 	let xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
+	    let consult = document.getElementById("consult_key");
             if (this.readyState == 4 && this.status == 200) {
 		let response = JSON.parse(this.responseText);
 
@@ -31,7 +32,20 @@ window.addEventListener("load", function(){
 			});
 		    }
 		};
-	    };
+		if (consult.lastElementChild.localName == "span") {
+		    consult.removeChild(consult.lastElementChild);
+		}
+	    }
+	    else if (this.readyState == 4 && this.status == 404) {
+		if (consult.lastElementChild.localName == "span") {
+		    consult.removeChild(consult.lastElementChild);
+		}
+		console.log("Id not found");
+		new_node = document.createElement("span");
+		new_node.className = "small";
+		new_node.textContent = "Not people found, please try again";
+		consult.appendChild(new_node);
+	    }
 	};
 	let url = "/key/" + key.value;
 	xhttp.open("GET", url, true);
